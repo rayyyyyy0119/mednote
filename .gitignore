@@ -11,3 +11,11 @@ private/
 replit.nix
 .quartz/
 quartz/cli/tui/dist/
+
+# Never publish copyrighted/private source documents from the clinical vault.
+00_Source_PDFs/
+01_Extracted_Chapters/
+Templates/
+*.pdf
+*.doc
+*.docx
