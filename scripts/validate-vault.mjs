@@ -21,11 +21,11 @@ const requiredHeadings = [
   "Source",
 ]
 
-function markdownFiles(dir) {
+function contentFiles(dir) {
   return fs.readdirSync(dir, { withFileTypes: true }).flatMap((entry) => {
     const fullPath = path.join(dir, entry.name)
-    if (entry.isDirectory()) return markdownFiles(fullPath)
-    return entry.isFile() && entry.name.endsWith(".md") ? [fullPath] : []
+    if (entry.isDirectory()) return contentFiles(fullPath)
+    return entry.isFile() ? [fullPath] : []
   })
 }
 
@@ -35,8 +35,9 @@ function parseFrontmatter(text) {
   return YAML.parse(match[1])
 }
 
-const files = markdownFiles(contentDir)
-const names = new Set(files.map((file) => path.basename(file, ".md").toLowerCase()))
+const allFiles = contentFiles(contentDir)
+const files = allFiles.filter((file) => file.endsWith(".md"))
+const names = new Set(allFiles.map((file) => path.basename(file, path.extname(file)).toLowerCase()))
 const errors = []
 const unresolved = new Set()
 
@@ -70,12 +71,12 @@ for (const file of files) {
 
   for (const match of text.matchAll(/\[\[([^\]]+)\]\]/g)) {
     const target = match[1].split("|")[0].split("#")[0].trim()
-    const basename = path.basename(target, ".md").toLowerCase()
+    const basename = path.basename(target, path.extname(target) || ".md").toLowerCase()
     if (basename && !names.has(basename)) unresolved.add(target)
   }
 }
 
-const forbidden = files.filter((file) => /\.(pdf|docx?|pptx?|xlsx?)$/i.test(file))
+const forbidden = allFiles.filter((file) => /\.(pdf|docx?|pptx?|xlsx?)$/i.test(file))
 if (forbidden.length > 0) errors.push("Binary source documents were found in content/")
 
 if (errors.length > 0) {
@@ -89,6 +90,9 @@ console.log(
   "All six chief-complaint notes have required YAML, quick steps, sections, and viewer-page sources.",
 )
 console.log("No PDF, Word, PowerPoint, or spreadsheet source files are present in content/.")
+console.log(
+  `${allFiles.filter((file) => /\.(png|jpe?g|webp)$/i.test(file)).length} approved image assets are present.`,
+)
 console.log(
   `${unresolved.size} unresolved wikilink targets remain as visibly marked templates/backlog topics.`,
 )
