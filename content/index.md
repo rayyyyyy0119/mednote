@@ -17,6 +17,7 @@ tags:
 ## 快速入口
 
 - [[Chief Complaint Index]]
+- [[Cardiology Hub]]
 - [[Chapter Index]]
 - [[PDF Source Register]]
 - [[Extraction Log]]
@@ -25,6 +26,7 @@ tags:
 - [[Local Legacy Source Map]]
 - [[LOCAL-01 Coverage Matrix]]
 - [[Vault Validation Report]]
+- [[Obsidian2024 Cardiology Import Map]]
 
 ## 工作流程
 
