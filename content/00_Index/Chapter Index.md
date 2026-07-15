@@ -17,6 +17,7 @@ tags:
 | ONCALL-01 | On-call principles and protocols | mapped by chapter bookmarks | [[On Call Chapter Map]] | mapped |
 | POCKET-01 | Internal medicine handbook | mapped by topic bookmarks | [[Pocket Medicine Topic Map]] | mapped |
 | LOCAL-01 | 第一次守內急就上手（legacy local handout） | normalized PDF 1-12 | [[Local Legacy Source Map]] | mapped |
+| OBSIDIAN2024-CV | CV 心臟內科 knowledge map | first-level 69 targets | [[Obsidian2024 Cardiology Import Map]] | first batch rewritten |
 
 ## Harrison Part 2
 

@@ -23,6 +23,7 @@ sync_markdown_dir "$VAULT_DIR/00_Index" "$CONTENT_DIR/00_Index"
 sync_markdown_dir "$VAULT_DIR/10_Chief_Complaints" "$CONTENT_DIR/10_Chief_Complaints"
 sync_markdown_dir "$VAULT_DIR/20_Diseases" "$CONTENT_DIR/20_Diseases"
 sync_markdown_dir "$VAULT_DIR/30_Drugs" "$CONTENT_DIR/30_Drugs"
+sync_markdown_dir "$VAULT_DIR/40_Specialties" "$CONTENT_DIR/40_Specialties"
 sync_markdown_dir "$VAULT_DIR/90_References" "$CONTENT_DIR/90_References"
 
 # Quartz uses content/index.md as the website homepage.
